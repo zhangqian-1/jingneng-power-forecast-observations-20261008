@@ -88,16 +88,10 @@ docker compose logs --tail 100 forecast
 
 ## 版本与下载
 
-本仓库是2026-10-08独立交付版本，包含96点预测、实测与偏差接口及异常值处理。模型权重仍为同一套七站模型，输出不含固定历史参考 `accuracy`。仓库不包含其他项目或旧仓库的提交历史。
+本项目提供96点功率预测、实测统计及预测偏差计算功能。
 
-源码仓库：[jingneng-power-forecast-observations-20261008](https://github.com/zhangqian-1/jingneng-power-forecast-observations-20261008)。[下载当前main源码](https://github.com/zhangqian-1/jingneng-power-forecast-observations-20261008/archive/refs/heads/main.zip)；公司GitLab交接建议使用Release中与镜像同提交的源码ZIP。源码包括模型、文档、样例及用于构建验证的真实测试CSV；运行镜像不带测试集。
+- **源码下载：** [GitHub仓库](https://github.com/zhangqian-1/jingneng-power-forecast-observations-20261008)
+- **部署包下载：** [Releases](https://github.com/zhangqian-1/jingneng-power-forecast-observations-20261008/releases)
+- **运行环境：** Linux AMD64（x86_64）
 
-已封装文件下载：[本仓库Releases](https://github.com/zhangqian-1/jingneng-power-forecast-observations-20261008/releases)。构建、接口、重启、73天滚动评分及镜像导出导入检查通过后，自动发布以下附件：
-
-| 文件 | 用途 |
-|---|---|
-| `source-提交号.zip` 和对应 `.sha256` | 同提交源码、模型、交接文档和样例，用于公司GitLab交接 |
-| `offline-image-amd64-…zip` 和对应 `.sha256` | Linux AMD64离线镜像及Compose启动配置，可直接交给部署人员 |
-| `container-checks-amd64-…zip` | 构建和接口验证记录、实际滚动评分，供核验使用 |
-
-本次仅提供 `linux/amd64` 镜像，对应服务器 `x86_64`，不适用于ARM服务器。交付时核对源码、镜像、`release.json` 和 `SHA256SUMS` 对应关系。运行缓存、历史结果和开发环境不交付。构建进度见 [Actions](https://github.com/zhangqian-1/jingneng-power-forecast-observations-20261008/actions)；只有Release附件上传成功才表示封装交付完成。正式上线前仍须完成目标服务器平台联调。
+接口字段和使用方法见[对接说明](docs/接口交接说明.md)及[返回字段说明](docs/返回字段说明.md)，部署前请完成平台联调。
