@@ -1,0 +1,369 @@
+{
+  "format_version": 3,
+  "model_type": "trend_detail",
+  "model_name": "StationAttentionFusion_TrendDetail_7station_2025_v1",
+  "data_policy": "power_zero_weather_causal_forward_fill_state_hold_4",
+  "history_points": 672,
+  "forecast_points": 96,
+  "interval_minutes": 15,
+  "low_frequency": {
+    "input_points": 288,
+    "nhits_dir": "nhits",
+    "patchtst_dir": "patchtst",
+    "fusion": {
+      "method": "level_shape",
+      "alpha": 0.5,
+      "beta": 0.7
+    }
+  },
+  "station_attention": {
+    "checkpoint": "station_attention.pt",
+    "mae_calibration": {
+      "method": "level_shape",
+      "alpha": 1.0,
+      "beta": 0.3
+    },
+    "hf_calibration": {
+      "method": "level_shape",
+      "alpha": 1.0,
+      "beta": 0.7
+    }
+  },
+  "second_stage": {
+    "mae_branch": {
+      "method": "blend",
+      "alpha": 1.0,
+      "beta": 1.0
+    },
+    "hf_branch": {
+      "method": "level_shape",
+      "alpha": 1.0,
+      "beta": 0.95
+    }
+  },
+  "trend_detail": {
+    "trend_method": "mae_smooth_w12",
+    "detail_method": "hf_highpass_w32",
+    "beta": 1.1,
+    "selection_rule": "validation_balance_score"
+  },
+  "test_metrics": {
+    "model_name": "TrendDetail",
+    "mae": 261.7887414663503,
+    "rmse": 357.07571883521354,
+    "mape": 10.877824238159434,
+    "smape": 11.017795131722405,
+    "r2": 0.7366803275333369,
+    "actual_std": 695.8548620070421,
+    "pred_std": 692.2944627542647,
+    "window_std_ratio": 0.8616907694029557,
+    "diff_std_ratio": 0.7906039766797447,
+    "peak_mae": 496.55033508895036,
+    "valley_mae": 252.44028456869015,
+    "ramp_mae": 213.71902754025487,
+    "test_windows": 73,
+    "validation_mape": 22.227822669264878,
+    "validation_mae": 195.7774890982457
+  },
+  "per_horizon_mape": [
+    5.177523123843989,
+    6.262405289120636,
+    6.805890315851632,
+    7.067921243548954,
+    7.169652678380338,
+    7.004655215642898,
+    6.941534712241247,
+    7.992708021040926,
+    6.649283418086103,
+    7.1931679350958175,
+    7.635915259640277,
+    7.947044873071604,
+    8.86103083326739,
+    8.15485208549094,
+    7.985319200556128,
+    8.4889592025559,
+    8.977419998709472,
+    8.23628564148944,
+    9.099654857577013,
+    8.853472721217992,
+    7.876000493661908,
+    8.53667641236074,
+    8.258069161090358,
+    8.869358801294576,
+    8.350240093737874,
+    9.588332295593187,
+    10.063263490746282,
+    10.226313765952995,
+    9.608092162795332,
+    10.25007273100301,
+    9.695417243724801,
+    9.51599119613121,
+    10.707881435675178,
+    9.635739334831676,
+    10.632304688126032,
+    11.15383395999912,
+    11.728763103735654,
+    11.26897434407246,
+    11.238808047204875,
+    10.086412919460344,
+    12.099590077720343,
+    12.31217425460876,
+    12.4276834118787,
+    13.309300944834243,
+    13.52682699879698,
+    12.365698079299056,
+    11.922804433356104,
+    12.191038635740787,
+    11.980354629972796,
+    12.502867849814049,
+    11.84437273424508,
+    11.456477511258392,
+    12.015195814588258,
+    11.96794885585207,
+    11.73755259785605,
+    11.559828338319265,
+    12.230397135722106,
+    12.403329213114118,
+    12.755741110751995,
+    11.905810051789956,
+    11.154285962222238,
+    10.359580546663137,
+    11.482236992016908,
+    11.716259911126686,
+    11.734425183518358,
+    13.751801948952922,
+    14.889201681055878,
+    14.031602931489939,
+    13.687792841097174,
+    13.532948455802906,
+    13.15114417237296,
+    12.467197412120509,
+    12.205239355188223,
+    12.479996228610213,
+    12.998194019934791,
+    12.836462004253448,
+    14.855793734697095,
+    14.96703657014622,
+    14.072047527857093,
+    13.683198723935702,
+    13.54704396418937,
+    13.759581694612322,
+    13.345774777254771,
+    12.946305087303442,
+    12.626957147112186,
+    13.119728614685478,
+    11.98888306593747,
+    10.54814175920579,
+    11.597261930171953,
+    10.340621129792208,
+    11.518401739576307,
+    11.322832488218717,
+    11.397295501627895,
+    11.241196524481326,
+    10.532260649308816,
+    10.07215959961974
+  ],
+  "split_ratio": [
+    0.6,
+    0.2,
+    0.2
+  ],
+  "input_data": {
+    "range": {
+      "start": "2025-01-01 00:00:00",
+      "end": "2025-12-31 23:45:00"
+    },
+    "rows": 35040,
+    "station_count": 7,
+    "power_point_count": 19,
+    "interval_minutes": 15,
+    "power_policy": "missing/non-numeric/non-finite -> 0; retain measured zero/negative; no interpolation, ffill, clipping, low-load repair",
+    "weather_policy": "per-point causal forward fill, station average then seven-station average; no future weather",
+    "aggregation": "sum 19 power points first; one total_power target",
+    "splits": {
+      "train": {
+        "start": "2025-01-01 00:00:00",
+        "end": "2025-08-07 23:45:00",
+        "rows": 21024,
+        "days": 219.0
+      },
+      "validation": {
+        "start": "2025-08-08 00:00:00",
+        "end": "2025-10-19 23:45:00",
+        "rows": 7008,
+        "days": 73.0
+      },
+      "test": {
+        "start": "2025-10-20 00:00:00",
+        "end": "2025-12-31 23:45:00",
+        "rows": 7008,
+        "days": 73.0
+      }
+    },
+    "raw_files_sha256": {
+      "C:\\Users\\Wangying\\Desktop\\京能项目\\最终修改\\上线最终-全站点\\原始数据\\高安屯热电.csv": "8c6a8245befb2ac3161acfa92dbaf5dda351c37e02fb57e7e84c1ab414c539bc",
+      "C:\\Users\\Wangying\\Desktop\\京能项目\\最终修改\\上线最终-全站点\\原始数据\\京西热电.csv": "b8b21cd3a3128984cee52022f57b903c104fc1c0276f4eaf0973c6c8e4a0690c",
+      "C:\\Users\\Wangying\\Desktop\\京能项目\\最终修改\\上线最终-全站点\\原始数据\\京阳热电.csv": "8b27e85e9a4db14f464125021b66eeef4e9bd157e70355bfe1d95967191e9178",
+      "C:\\Users\\Wangying\\Desktop\\京能项目\\最终修改\\上线最终-全站点\\原始数据\\京桥热电.csv": "c3d16d46387a173856bbbb08ff3878b9fe806c024f091f41295ef223abfb8744",
+      "C:\\Users\\Wangying\\Desktop\\京能项目\\最终修改\\上线最终-全站点\\原始数据\\京丰燃气.csv": "cc15cfb098a22f15f82f8e2986f65f6f8c55d2fbeb4b946eead65da2bcd65baa",
+      "C:\\Users\\Wangying\\Desktop\\京能项目\\最终修改\\上线最终-全站点\\原始数据\\未来热电.csv": "563156a39fbd3983b4e932ee3fc8ae8178f64af1170228a2c1dcf8746dab5bf2",
+      "C:\\Users\\Wangying\\Desktop\\京能项目\\最终修改\\上线最终-全站点\\原始数据\\上庄热电.csv": "4983bc7daf39e68d4d8ea0e841be84347a54c77191b7efd4ee06b6afc693e9c6"
+    },
+    "stations": [
+      {
+        "station": "高安屯热电",
+        "power_points": [
+          "GARD_11MBY0100000BJ01XQ01",
+          "GARD_12MBY0100000BJ01XQ01",
+          "GARD_13MKA01CE903BJ01XQ01"
+        ],
+        "temperature_points": [
+          "GARD_11MBL3100000BT01XQ01"
+        ],
+        "humidity_points": [
+          "GARD_11MBL3100000BM01XQ01"
+        ],
+        "missing_power_values_zero_filled": 6974,
+        "missing_weather_values_forward_filled": 4576,
+        "original_zero_power_values": 1424
+      },
+      {
+        "station": "京西热电",
+        "power_points": [
+          "JXRD_11MBY0100000BJ01XQ01",
+          "JXRD_12MBY0100000BJ01XQ01",
+          "JXRD_13MKA01GA001BJ02XQ01",
+          "JXRD_15MKA01GA001BJ02XQ01",
+          "JXRD_14MBY0100000BJ01XQ01"
+        ],
+        "temperature_points": [
+          "JXRD_11MBL3100000BT01XQ01"
+        ],
+        "humidity_points": [
+          "JXRD_11MBL3100000BM01XQ01"
+        ],
+        "missing_power_values_zero_filled": 884,
+        "missing_weather_values_forward_filled": 375,
+        "original_zero_power_values": 2
+      },
+      {
+        "station": "京阳热电",
+        "power_points": [
+          "JYRD_LOADCTL:GTMWSEL1_1.OUT",
+          "JYRD_LOADCTL:GTMWSEL1_2.OUT",
+          "JYRD_30DCS01:FU101.PNT"
+        ],
+        "temperature_points": [
+          "JYRD_QIXIANGYI:RIN7.MEAS"
+        ],
+        "humidity_points": [
+          "JYRD_11MBL3100000BM01XQ01"
+        ],
+        "missing_power_values_zero_filled": 4536,
+        "missing_weather_values_forward_filled": 3090,
+        "original_zero_power_values": 21862
+      },
+      {
+        "station": "京桥热电",
+        "power_points": [
+          "JQRD_10CBA00FA107XQ93",
+          "JQRD_10CBA00FA108XQ93",
+          "JQRD_10CBA00FA109XQ93"
+        ],
+        "temperature_points": [
+          "JQRD_11MBL11CT010XQ01",
+          "JQRD_12MBL11CT010XQ01"
+        ],
+        "humidity_points": [
+          "JQRD_11MBL11CM001XQ01",
+          "JQRD_12MBL11CM001XQ01"
+        ],
+        "missing_power_values_zero_filled": 6369,
+        "missing_weather_values_forward_filled": 6105,
+        "original_zero_power_values": 1367
+      },
+      {
+        "station": "京丰燃气",
+        "power_points": [
+          "JFRD_11MKA01GA001BJ40XQ01"
+        ],
+        "temperature_points": [
+          "JFRD_11MBL0100000BT02XQ01"
+        ],
+        "humidity_points": [
+          "JFRD_11MBL0100000BM01XQ01"
+        ],
+        "missing_power_values_zero_filled": 385,
+        "missing_weather_values_forward_filled": 751,
+        "original_zero_power_values": 13796
+      },
+      {
+        "station": "未来热电",
+        "power_points": [
+          "WLRD_13MKA0100000BJ01XQ01",
+          "WLRD_11MBY10CE901XQ01"
+        ],
+        "temperature_points": [
+          "WLRD_11MBL01WP001BT01XQ01"
+        ],
+        "humidity_points": [
+          "WLRD_11MBL01WP001BM01XQ01"
+        ],
+        "missing_power_values_zero_filled": 1540,
+        "missing_weather_values_forward_filled": 650,
+        "original_zero_power_values": 303
+      },
+      {
+        "station": "上庄热电",
+        "power_points": [
+          "SZRD_10DCS02FA133",
+          "SZRD_10DCS02FA134"
+        ],
+        "temperature_points": [
+          "SZRD_11MBL10CT901ZQ01"
+        ],
+        "humidity_points": [
+          "SZRD_11MBL10CM901ZQ01"
+        ],
+        "missing_power_values_zero_filled": 3668,
+        "missing_weather_values_forward_filled": 267,
+        "original_zero_power_values": 20015
+      }
+    ],
+    "missing_power_values": 24356,
+    "all_power_points_observed_ratio": 0.7197203196347032,
+    "zero_total_rows": 0,
+    "negative_total_rows": 0,
+    "data_files_sha256": {
+      "power_points_observed_mask.csv": "d8bed7a340f4614b689d286a5ebfac537f3a5c4b02228fe561ad43dd85aa6066",
+      "power_points_zero_filled.csv": "37d69f24f42b304ad448de5e3b89cb41dab4858927ebc5a199ec2ee07f0d45ec",
+      "station_detail.csv": "9b1792067972e326250b7a6129fe7370f6a797758418c25a766c4b952e5d6148",
+      "training.csv": "a4773f696c52dfb56bb5a02505e3cef422eb9db2af58aa9c77a9f4ab6833aca2"
+    },
+    "source_snapshot_sha256": {
+      "00_analyze_station_switch_modes.py": "6c1d3959fc88059089c10f23e1413ff3b24a1db9131fa36e0ba2e16e8935a699",
+      "01_compare_total_power_neuralforecast.py": "1431a5c83f513fec23ba3726ae9e16f72e7395153b8fb2ca6278a04eb1dd1e1e",
+      "02_train_total_power_station_attention_hf.py": "267499fa74ef095a5174095e5bb9fdbc246acbae81574d65894d7e624a7fe82a",
+      "03_fuse_total_power_station_attention.py": "3728154a8abc215a7d2d520fb6108fdfe21fb1ce73c6a5cb5889c930f6fb5540",
+      "04_create_trend_detail_fusion.py": "d1a6f4bdb6677fa4e5b4999563107d4db29db6296a02bc1c2b37d950861a096d",
+      "build_training_dataset_previous_value.py": "038af3607e69507acce34a7955432b3a81458d50f6d633a5c1f5cb3d06c3bf8c"
+    }
+  },
+  "fusion_selection_split": "validation_only",
+  "offline_sources": {
+    "run": "2025全年七站离线训练_v1",
+    "source_path": "C:\\Users\\Wangying\\Desktop\\京能项目\\最终修改\\上线最终-全站点\\全站总功率TrendDetail折中版\\03_结果\\2025全年七站离线训练_v1",
+    "fusion_parameters_sha256": "b029e5bd78e74a55909ce2d35b561e334d74593fedd82b8c267dae799d546498",
+    "evaluation_summary_sha256": "8c4af69f39a2409a955da4d27d163b5e580f2edbacc34f12b598bfbe550bcb28",
+    "no_retraining": true
+  },
+  "artifacts": {
+    "nhits/alias_to_model.pkl": "a0df30975dfd15d30cfb94836cb0d3b69390e35984ffcdbcba568e443785720d",
+    "nhits/configuration.pkl": "046df100d0e77b3372e839907c48913b38c0cf4b62edcf6be6c190e6beb82a33",
+    "nhits/NHITS_0.ckpt": "b1ab6252d6a73907ea2ce9a3faa6698e752112fd1f968c135d3b3883a9ed224a",
+    "patchtst/alias_to_model.pkl": "8247bcddb819d9c79455da3db6547cc0825bf8ef940ddcbfb34dc1f9897288ce",
+    "patchtst/configuration.pkl": "046df100d0e77b3372e839907c48913b38c0cf4b62edcf6be6c190e6beb82a33",
+    "patchtst/PatchTST_0.ckpt": "cfad53fe9e352885df82ecfb0c8ed7ebf2d7d14c5c8ef0e5744178ea3ae2ef01",
+    "station_attention.pt": "5f1b6dbe40ff72e2479146d51899fa51ee29bf679928918521fabaf3cd7af7dd"
+  }
+}

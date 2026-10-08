@@ -1,0 +1,12 @@
+{
+  "result_point": [],
+  "event_key": "JNH.Fluxcast.Compute",
+  "reason": "weather_history_not_ready",
+  "message": "温湿度历史尚不能构造完整模型输入，本次数据已缓存",
+  "continuous_points": 0,
+  "required_points": 672,
+  "missing_weather_points": [
+    "GARD_11MBL3100000BT01XQ01"
+  ],
+  "extra_info": []
+}

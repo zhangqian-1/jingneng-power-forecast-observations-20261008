@@ -1,0 +1,517 @@
+{
+  "result_point": [
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 16:00:00",
+      "value": 1128.3921
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 16:15:00",
+      "value": 1096.9794
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 16:30:00",
+      "value": 1094.0321
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 16:45:00",
+      "value": 1087.6272
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 17:00:00",
+      "value": 1093.4384
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 17:15:00",
+      "value": 1096.305
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 17:30:00",
+      "value": 1065.8464
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 17:45:00",
+      "value": 1058.6665
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 18:00:00",
+      "value": 1067.3021
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 18:15:00",
+      "value": 1056.1926
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 18:30:00",
+      "value": 1080.9116
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 18:45:00",
+      "value": 1064.2067
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 19:00:00",
+      "value": 1086.8864
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 19:15:00",
+      "value": 1104.4509
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 19:30:00",
+      "value": 1087.1886
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 19:45:00",
+      "value": 1053.5668
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 20:00:00",
+      "value": 1039.9693
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 20:15:00",
+      "value": 1034.9377
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 20:30:00",
+      "value": 1073.787
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 20:45:00",
+      "value": 1074.0217
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 21:00:00",
+      "value": 1074.1234
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 21:15:00",
+      "value": 1073.616
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 21:30:00",
+      "value": 1046.5585
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 21:45:00",
+      "value": 1045.9395
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 22:00:00",
+      "value": 1031.2866
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 22:15:00",
+      "value": 1073.7094
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 22:30:00",
+      "value": 1092.3207
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 22:45:00",
+      "value": 1119.2006
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 23:00:00",
+      "value": 1088.0186
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 23:15:00",
+      "value": 1117.5334
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 23:30:00",
+      "value": 1096.6729
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-19 23:45:00",
+      "value": 1091.7103
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 00:00:00",
+      "value": 1067.256
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 00:15:00",
+      "value": 1060.7838
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 00:30:00",
+      "value": 1091.5336
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 00:45:00",
+      "value": 1124.4887
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 01:00:00",
+      "value": 1060.3869
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 01:15:00",
+      "value": 1091.6338
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 01:30:00",
+      "value": 1098.0626
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 01:45:00",
+      "value": 1102.5206
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 02:00:00",
+      "value": 1091.0485
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 02:15:00",
+      "value": 1089.4467
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 02:30:00",
+      "value": 1070.0631
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 02:45:00",
+      "value": 1013.7331
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 03:00:00",
+      "value": 1044.8329
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 03:15:00",
+      "value": 1023.9777
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 03:30:00",
+      "value": 989.9092
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 03:45:00",
+      "value": 1019.1794
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 04:00:00",
+      "value": 1135.3534
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 04:15:00",
+      "value": 1098.4119
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 04:30:00",
+      "value": 1090.4926
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 04:45:00",
+      "value": 1041.9329
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 05:00:00",
+      "value": 1110.683
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 05:15:00",
+      "value": 1059.5334
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 05:30:00",
+      "value": 1038.9963
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 05:45:00",
+      "value": 1069.6197
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 06:00:00",
+      "value": 1207.6369
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 06:15:00",
+      "value": 1289.2837
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 06:30:00",
+      "value": 1423.7154
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 06:45:00",
+      "value": 1398.9448
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 07:00:00",
+      "value": 1626.4651
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 07:15:00",
+      "value": 1624.5651
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 07:30:00",
+      "value": 1487.8866
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 07:45:00",
+      "value": 1405.9472
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 08:00:00",
+      "value": 1563.1306
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 08:15:00",
+      "value": 1605.5084
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 08:30:00",
+      "value": 1579.7707
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 08:45:00",
+      "value": 1474.5874
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 09:00:00",
+      "value": 1479.1509
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 09:15:00",
+      "value": 1539.2328
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 09:30:00",
+      "value": 1529.0013
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 09:45:00",
+      "value": 1646.9356
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 10:00:00",
+      "value": 1649.4465
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 10:15:00",
+      "value": 1640.3343
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 10:30:00",
+      "value": 1630.1837
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 10:45:00",
+      "value": 1613.021
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 11:00:00",
+      "value": 1626.8504
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 11:15:00",
+      "value": 1624.043
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 11:30:00",
+      "value": 1623.5035
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 11:45:00",
+      "value": 1619.9835
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 12:00:00",
+      "value": 1618.1034
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 12:15:00",
+      "value": 1534.06
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 12:30:00",
+      "value": 1509.2439
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 12:45:00",
+      "value": 1471.4469
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 13:00:00",
+      "value": 1434.5531
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 13:15:00",
+      "value": 1491.7423
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 13:30:00",
+      "value": 1448.2032
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 13:45:00",
+      "value": 1387.465
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 14:00:00",
+      "value": 1386.1686
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 14:15:00",
+      "value": 1333.8029
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 14:30:00",
+      "value": 1186.8684
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 14:45:00",
+      "value": 1104.8003
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 15:00:00",
+      "value": 1121.1493
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 15:15:00",
+      "value": 1095.8217
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 15:30:00",
+      "value": 1034.3263
+    },
+    {
+      "varname": "totalPowerForecast",
+      "timestamp": "2025-10-20 15:45:00",
+      "value": 1076.6206
+    },
+    {
+      "varname": "forecastPointCount",
+      "timestamp": "2026-10-07 04:07:01",
+      "value": 96.0
+    },
+    {
+      "varname": "forecastIntervalMinutes",
+      "timestamp": "2026-10-07 04:07:01",
+      "value": 15.0
+    }
+  ],
+  "extra_info": [
+    {
+      "varname": "forecastBatchId",
+      "timestamp": "2026-10-07 04:07:01",
+      "value": "dayahead-361b9fc5ebd24c89ac3d02a9041ab5a3"
+    },
+    {
+      "varname": "forecastGeneratedAt",
+      "timestamp": "2026-10-07 04:07:01",
+      "value": "2026-10-07 04:07:01"
+    },
+    {
+      "varname": "forecastStartAt",
+      "timestamp": "2026-10-07 04:07:01",
+      "value": "2025-10-19 16:00:00"
+    },
+    {
+      "varname": "forecastEndAt",
+      "timestamp": "2026-10-07 04:07:01",
+      "value": "2025-10-20 15:45:00"
+    }
+  ],
+  "event_key": "JNH.Fluxcast.Compute"
+}

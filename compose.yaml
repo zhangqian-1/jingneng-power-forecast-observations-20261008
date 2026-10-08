@@ -1,0 +1,37 @@
+name: jingneng-power-forecast-7station
+
+services:
+  forecast:
+    image: ${POWER_FORECAST_IMAGE:?Set POWER_FORECAST_IMAGE in .env to the delivered image}
+    init: true
+    restart: unless-stopped
+    stop_grace_period: 30s
+    ports:
+      - "${POWER_FORECAST_BIND:-127.0.0.1}:${POWER_FORECAST_PORT:-8000}:8000"
+      - "${POWER_OBSERVATIONS_BIND:-127.0.0.1}:${POWER_OBSERVATIONS_PORT:-8002}:8002"
+    volumes:
+      - type: bind
+        source: ${POWER_FORECAST_RUNTIME_DIR:-./runtime}
+        target: /app/runtime
+        bind:
+          create_host_path: true
+      - type: bind
+        source: ${POWER_OBSERVATIONS_RUNTIME_DIR:-./runtime_observations}
+        target: /app/runtime_observations
+        bind:
+          create_host_path: true
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -m
+        - observations_service.healthcheck
+      interval: 15s
+      timeout: 10s
+      retries: 3
+      start_period: 180s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

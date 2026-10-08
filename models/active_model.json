@@ -1,0 +1,6 @@
+{
+  "model_type": "trend_detail",
+  "version": "trend_detail_7station_2025_v1",
+  "model_dir": "versions/trend_detail_7station_2025_v1",
+  "manifest": "manifest.json"
+}

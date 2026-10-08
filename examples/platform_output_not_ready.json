@@ -1,0 +1,10 @@
+{
+  "result_point": [],
+  "event_key": "JNH.Fluxcast.Compute",
+  "reason": "history_not_ready",
+  "message": "连续可用历史不足，本次数据已缓存",
+  "continuous_points": 96,
+  "required_points": 672,
+  "missing_weather_points": [],
+  "extra_info": []
+}

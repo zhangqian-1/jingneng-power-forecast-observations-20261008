@@ -1,0 +1,167 @@
+{
+  "result_point": [
+    {
+      "varname": "GARD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 2.0
+    },
+    {
+      "varname": "GARD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "JXRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 5.0
+    },
+    {
+      "varname": "JXRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 5.0
+    },
+    {
+      "varname": "JXRD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 590.0
+    },
+    {
+      "varname": "JYRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "JYRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "JYRD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 295.0
+    },
+    {
+      "varname": "JQRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "JQRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "JQRD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 285.0
+    },
+    {
+      "varname": "JFRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 1.0
+    },
+    {
+      "varname": "JFRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 1.0
+    },
+    {
+      "varname": "JFRD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 130.0
+    },
+    {
+      "varname": "WLRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 2.0
+    },
+    {
+      "varname": "WLRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 2.0
+    },
+    {
+      "varname": "WLRD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 110.0
+    },
+    {
+      "varname": "SZRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 2.0
+    },
+    {
+      "varname": "SZRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 2.0
+    },
+    {
+      "varname": "SZRD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 85.0
+    }
+  ],
+  "extra_info": [
+    {
+      "varname": "dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "incomplete"
+    },
+    {
+      "varname": "reason",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "missing_power_points"
+    },
+    {
+      "varname": "missingPoints",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "GARD_11MBY0100000BJ01XQ01"
+    },
+    {
+      "varname": "GARD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "incomplete"
+    },
+    {
+      "varname": "GARD_missingPoints",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "GARD_11MBY0100000BJ01XQ01"
+    },
+    {
+      "varname": "JXRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "JYRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "JQRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "JFRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "WLRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "SZRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "message",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "missing_power_points: GARD_11MBY0100000BJ01XQ01=null (value=None); omitted=GARD_powerActual,totalPowerActual,totalPowerDeviation,GARD_powerShare,JXRD_powerShare,JYRD_powerShare,JQRD_powerShare,JFRD_powerShare,WLRD_powerShare,SZRD_powerShare"
+    }
+  ],
+  "event_key": "JNH.Fluxcast.Compute"
+}

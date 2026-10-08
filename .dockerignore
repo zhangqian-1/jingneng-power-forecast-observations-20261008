@@ -1,0 +1,55 @@
+# 忽略Python编译文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# 虚拟环境
+venv/
+env/
+ENV/
+
+# IDE配置
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 测试和覆盖率
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 文档
+*.md
+!README.md
+
+# Git
+.git/
+.gitignore
+
+# 大文件和临时文件
+*.log
+*.tmp
+.DS_Store
+
+# Test fixtures and raw test data must never enter the production image.
+tests/
+
+# JSON examples are for interface handover and are not runtime dependencies.
+examples/
+
+# Runtime history and retired weights are not shipped with the active model.
+runtime/
+runtime_observations/
+observations_service/tests/
+observations_service/examples/
+models/versions/trend_detail_v2/
+
+# Deployment configuration stays on the host, not in the build context.
+compose.yaml
+.env
+.env.*
+*.tar

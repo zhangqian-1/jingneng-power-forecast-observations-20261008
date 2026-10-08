@@ -1,0 +1,207 @@
+{
+  "result_point": [
+    {
+      "varname": "totalPowerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 1795.0
+    },
+    {
+      "varname": "totalPowerDeviation",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 55.0
+    },
+    {
+      "varname": "GARD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "GARD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "GARD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 300.0
+    },
+    {
+      "varname": "GARD_powerShare",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 16.71309192200557
+    },
+    {
+      "varname": "JXRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 5.0
+    },
+    {
+      "varname": "JXRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 5.0
+    },
+    {
+      "varname": "JXRD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 590.0
+    },
+    {
+      "varname": "JXRD_powerShare",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 32.86908077994429
+    },
+    {
+      "varname": "JYRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "JYRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "JYRD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 295.0
+    },
+    {
+      "varname": "JYRD_powerShare",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 16.434540389972145
+    },
+    {
+      "varname": "JQRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "JQRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "JQRD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 285.0
+    },
+    {
+      "varname": "JQRD_powerShare",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 15.87743732590529
+    },
+    {
+      "varname": "JFRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 1.0
+    },
+    {
+      "varname": "JFRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 1.0
+    },
+    {
+      "varname": "JFRD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 130.0
+    },
+    {
+      "varname": "JFRD_powerShare",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 7.242339832869081
+    },
+    {
+      "varname": "WLRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 2.0
+    },
+    {
+      "varname": "WLRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 2.0
+    },
+    {
+      "varname": "WLRD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 110.0
+    },
+    {
+      "varname": "WLRD_powerShare",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 6.128133704735376
+    },
+    {
+      "varname": "SZRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 2.0
+    },
+    {
+      "varname": "SZRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 2.0
+    },
+    {
+      "varname": "SZRD_powerActual",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 85.0
+    },
+    {
+      "varname": "SZRD_powerShare",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 4.735376044568245
+    }
+  ],
+  "extra_info": [
+    {
+      "varname": "dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "forecastBatchId",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "dayahead-11111111111111111111111111111111"
+    },
+    {
+      "varname": "GARD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "JXRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "JYRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "JQRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "JFRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "WLRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "SZRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "complete"
+    },
+    {
+      "varname": "latestActualAt",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "2026-11-25 05:00:00"
+    }
+  ],
+  "event_key": "JNH.Fluxcast.Compute"
+}

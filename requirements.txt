@@ -1,0 +1,6 @@
+# Production inference runs on CPU unless a CUDA-enabled image is built explicitly.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.11.0+cpu
+numpy>=1.24.0
+pandas>=2.0.0
+neuralforecast==3.1.9

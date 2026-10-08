@@ -1,0 +1,167 @@
+{
+  "result_point": [
+    {
+      "varname": "GARD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 0.0
+    },
+    {
+      "varname": "GARD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "JXRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 0.0
+    },
+    {
+      "varname": "JXRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 5.0
+    },
+    {
+      "varname": "JYRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 0.0
+    },
+    {
+      "varname": "JYRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "JQRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 0.0
+    },
+    {
+      "varname": "JQRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 3.0
+    },
+    {
+      "varname": "JFRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 0.0
+    },
+    {
+      "varname": "JFRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 1.0
+    },
+    {
+      "varname": "WLRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 0.0
+    },
+    {
+      "varname": "WLRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 2.0
+    },
+    {
+      "varname": "SZRD_validPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 0.0
+    },
+    {
+      "varname": "SZRD_requiredPointCount",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": 2.0
+    }
+  ],
+  "extra_info": [
+    {
+      "varname": "dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "missing"
+    },
+    {
+      "varname": "reason",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "missing_power_points"
+    },
+    {
+      "varname": "missingPoints",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "GARD_11MBY0100000BJ01XQ01,GARD_12MBY0100000BJ01XQ01,GARD_13MKA01CE903BJ01XQ01,JXRD_11MBY0100000BJ01XQ01,JXRD_12MBY0100000BJ01XQ01,JXRD_13MKA01GA001BJ02XQ01,JXRD_14MBY0100000BJ01XQ01,JXRD_15MKA01GA001BJ02XQ01,JYRD_LOADCTL:GTMWSEL1_1.OUT,JYRD_LOADCTL:GTMWSEL1_2.OUT,JYRD_30DCS01:FU101.PNT,JQRD_10CBA00FA107XQ93,JQRD_10CBA00FA108XQ93,JQRD_10CBA00FA109XQ93,JFRD_11MKA01GA001BJ40XQ01,WLRD_13MKA0100000BJ01XQ01,WLRD_11MBY10CE901XQ01,SZRD_10DCS02FA133,SZRD_10DCS02FA134"
+    },
+    {
+      "varname": "GARD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "missing"
+    },
+    {
+      "varname": "GARD_missingPoints",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "GARD_11MBY0100000BJ01XQ01,GARD_12MBY0100000BJ01XQ01,GARD_13MKA01CE903BJ01XQ01"
+    },
+    {
+      "varname": "JXRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "missing"
+    },
+    {
+      "varname": "JXRD_missingPoints",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "JXRD_11MBY0100000BJ01XQ01,JXRD_12MBY0100000BJ01XQ01,JXRD_13MKA01GA001BJ02XQ01,JXRD_14MBY0100000BJ01XQ01,JXRD_15MKA01GA001BJ02XQ01"
+    },
+    {
+      "varname": "JYRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "missing"
+    },
+    {
+      "varname": "JYRD_missingPoints",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "JYRD_LOADCTL:GTMWSEL1_1.OUT,JYRD_LOADCTL:GTMWSEL1_2.OUT,JYRD_30DCS01:FU101.PNT"
+    },
+    {
+      "varname": "JQRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "missing"
+    },
+    {
+      "varname": "JQRD_missingPoints",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "JQRD_10CBA00FA107XQ93,JQRD_10CBA00FA108XQ93,JQRD_10CBA00FA109XQ93"
+    },
+    {
+      "varname": "JFRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "missing"
+    },
+    {
+      "varname": "JFRD_missingPoints",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "JFRD_11MKA01GA001BJ40XQ01"
+    },
+    {
+      "varname": "WLRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "missing"
+    },
+    {
+      "varname": "WLRD_missingPoints",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "WLRD_13MKA0100000BJ01XQ01,WLRD_11MBY10CE901XQ01"
+    },
+    {
+      "varname": "SZRD_dataStatus",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "missing"
+    },
+    {
+      "varname": "SZRD_missingPoints",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "SZRD_10DCS02FA133,SZRD_10DCS02FA134"
+    },
+    {
+      "varname": "message",
+      "timestamp": "2026-11-25 05:00:00",
+      "value": "missing_power_points: GARD_11MBY0100000BJ01XQ01=null (value=None), GARD_12MBY0100000BJ01XQ01=null (value=None), GARD_13MKA01CE903BJ01XQ01=null (value=None); omitted=GARD_powerActual,totalPowerActual,totalPowerDeviation,GARD_powerShare,JXRD_powerShare,JYRD_powerShare,JQRD_powerShare,JFRD_powerShare,WLRD_powerShare,SZRD_powerShare | missing_power_points: JXRD_11MBY0100000BJ01XQ01=null (value=None), JXRD_12MBY0100000BJ01XQ01=null (value=None), JXRD_13MKA01GA001BJ02XQ01=null (value=None), JXRD_14MBY0100000BJ01XQ01=null (value=None), JXRD_15MKA01GA001BJ02XQ01=null (value=None); omitted=JXRD_powerActual,totalPowerActual,totalPowerDeviation,GARD_powerShare,JXRD_powerShare,JYRD_powerShare,JQRD_powerShare,JFRD_powerShare,WLRD_powerShare,SZRD_powerShare | missing_power_points: JYRD_LOADCTL:GTMWSEL1_1.OUT=null (value=None), JYRD_LOADCTL:GTMWSEL1_2.OUT=null (value=None), JYRD_30DCS01:FU101.PNT=null (value=None); omitted=JYRD_powerActual,totalPowerActual,totalPowerDeviation,GARD_powerShare,JXRD_powerShare,JYRD_powerShare,JQRD_powerShare,JFRD_powerShare,WLRD_powerShare,SZRD_powerShare | missing_power_points: JQRD_10CBA00FA107XQ93=null (value=None), JQRD_10CBA00FA108XQ93=null (value=None), JQRD_10CBA00FA109XQ93=null (value=None); omitted=JQRD_powerActual,totalPowerActual,totalPowerDeviation,GARD_powerShare,JXRD_powerShare,JYRD_powerShare,JQRD_powerShare,JFRD_powerShare,WLRD_powerShare,SZRD_powerShare | missing_power_points: JFRD_11MKA01GA001BJ40XQ01=null (value=None); omitted=JFRD_powerActual,totalPowerActual,totalPowerDeviation,GARD_powerShare,JXRD_powerShare,JYRD_powerShare,JQRD_powerShare,JFRD_powerShare,WLRD_powerShare,SZRD_powerShare | missing_power_points: WLRD_13MKA0100000BJ01XQ01=null (value=None), WLRD_11MBY10CE901XQ01=null (value=None); omitted=WLRD_powerActual,totalPowerActual,totalPowerDeviation,GARD_powerShare,JXRD_powerShare,JYRD_powerShare,JQRD_powerShare,JFRD_powerShare,WLRD_powerShare,SZRD_powerShare | missing_power_points: SZRD_10DCS02FA133=null (value=None), SZRD_10DCS02FA134=null (value=None); omitted=SZRD_powerActual,totalPowerActual,totalPowerDeviation,GARD_powerShare,JXRD_powerShare,JYRD_powerShare,JQRD_powerShare,JFRD_powerShare,WLRD_powerShare,SZRD_powerShare"
+    }
+  ],
+  "event_key": "JNH.Fluxcast.Compute"
+}

@@ -1,0 +1,308 @@
+name: Build And Test AMD64 Delivery
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      TARGET_ARCH: amd64
+      POWER_FORECAST_BIND: 127.0.0.1
+      POWER_FORECAST_PORT: "8000"
+      POWER_FORECAST_RUNTIME_DIR: /tmp/power-forecast-smoke
+      POWER_OBSERVATIONS_BIND: 127.0.0.1
+      POWER_OBSERVATIONS_PORT: "8100"
+      POWER_OBSERVATIONS_RUNTIME_DIR: /tmp/power-observations-smoke
+      PYTHONDONTWRITEBYTECODE: "1"
+      MPLBACKEND: Agg
+      DOCKER_BUILD_RECORD_UPLOAD: "false"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Prepare image identity
+        shell: bash
+        run: |
+          IMAGE_REPO="ghcr.io/${GITHUB_REPOSITORY,,}"
+          IMAGE_TAG="7station-platform-v1-${TARGET_ARCH}-${GITHUB_SHA:0:12}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          echo "POWER_FORECAST_IMAGE=$IMAGE_REPO:$IMAGE_TAG" >> "$GITHUB_ENV"
+          mkdir -p tests/results/ci "$POWER_FORECAST_RUNTIME_DIR"
+          docker compose version
+
+      - name: Validate Compose configuration
+        run: docker compose -p forecast-ci config --quiet
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build image for integration test
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/${{ env.TARGET_ARCH }}
+          load: true
+          push: false
+          tags: ${{ env.POWER_FORECAST_IMAGE }}
+          labels: |
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+
+      - name: Check built image
+        shell: bash
+        run: |
+          test "$(docker image inspect "$POWER_FORECAST_IMAGE" --format '{{.Os}}/{{.Architecture}}')" = "linux/$TARGET_ARCH"
+          docker image inspect "$POWER_FORECAST_IMAGE" > tests/results/ci/image_inspect.json
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --disable-pip-version-check \
+            "numpy>=1.24,<3.0" "pandas>=2.0,<3.0" matplotlib
+
+      - name: Test API assertions
+        run: |
+          python -m unittest discover -s tests -p 'test_*.py' -v
+          python -m unittest discover -s tests/migration_2025 -p 'test_*.py' -v
+
+      - name: Build daily requests from real station CSVs
+        run: |
+          python tests/build_real_test_payloads.py \
+            --raw-dir tests/real_data_raw \
+            --output-dir tests/fixtures/real_data_daily \
+            --end-time "2025-10-12 23:45:00"
+
+      - name: Start with handover Compose
+        run: docker compose -p forecast-ci up -d --wait --wait-timeout 300
+
+      - name: Test API with real-data fixtures
+        run: |
+          python tests/run_api_test.py --fixture-dir tests/fixtures/real_data_daily \
+            --save-response tests/results/ci/smoke_response.json
+          python -m observations_service.tests.run_container_smoke \
+            --save-response tests/results/ci/observations_smoke_response.json
+
+      - name: Recreate container and verify persistence
+        run: |
+          docker compose -p forecast-ci up -d --force-recreate --wait --wait-timeout 300
+          python tests/run_api_test.py --fixture-dir tests/fixtures/real_data_daily \
+            --verify-restored tests/results/ci/smoke_response.json
+          python -m observations_service.tests.run_container_smoke \
+            --verify-restored tests/results/ci/observations_smoke_response.json
+
+      - name: Score the complete real test set
+        env:
+          POWER_FORECAST_PORT: "8001"
+          POWER_FORECAST_RUNTIME_DIR: /tmp/power-forecast-score
+          POWER_OBSERVATIONS_PORT: "8101"
+          POWER_OBSERVATIONS_RUNTIME_DIR: /tmp/power-observations-score
+        run: |
+          mkdir -p "$POWER_FORECAST_RUNTIME_DIR"
+          docker compose -p forecast-score up -d --wait --wait-timeout 300
+          python tests/run_rolling_accuracy_test.py --base-url http://127.0.0.1:8001 \
+            --target-start "2025-10-20 00:00:00" --target-windows 73 --warmup-days 14 \
+            --output-dir tests/results/ci/rolling_accuracy
+          python - <<'PY'
+          import json
+          import math
+          from pathlib import Path
+          active = json.loads(Path("models/active_model.json").read_text())
+          manifest = json.loads((Path("models") / active["model_dir"] / active["manifest"]).read_text())
+          summary = json.loads(Path("tests/results/ci/rolling_accuracy/summary.json").read_text())
+          metrics = summary["metrics"]
+          assert metrics["points"] == 7008
+          assert math.isfinite(metrics["mape_percent"])
+          assert abs(metrics["mape_percent"] - manifest["test_metrics"]["mape"]) <= 0.01, "Container MAPE differs from offline reference by more than 0.01 percentage points"
+          PY
+
+      - name: Collect smoke logs
+        if: always()
+        run: |
+          mkdir -p tests/results/ci
+          docker compose -p forecast-ci logs --no-color > tests/results/ci/smoke_container.log 2>&1
+
+      - name: Collect scoring logs
+        if: always()
+        env:
+          POWER_FORECAST_PORT: "8001"
+          POWER_FORECAST_RUNTIME_DIR: /tmp/power-forecast-score
+          POWER_OBSERVATIONS_PORT: "8101"
+          POWER_OBSERVATIONS_RUNTIME_DIR: /tmp/power-observations-score
+        run: docker compose -p forecast-score logs --no-color > tests/results/ci/score_container.log 2>&1
+
+      - name: Stop smoke container
+        if: always()
+        run: docker compose -p forecast-ci down
+
+      - name: Stop scoring container
+        if: always()
+        env:
+          POWER_FORECAST_PORT: "8001"
+          POWER_FORECAST_RUNTIME_DIR: /tmp/power-forecast-score
+          POWER_OBSERVATIONS_PORT: "8101"
+          POWER_OBSERVATIONS_RUNTIME_DIR: /tmp/power-observations-score
+        run: docker compose -p forecast-score down
+
+      - name: Push tested image
+        run: docker push "$POWER_FORECAST_IMAGE"
+
+      - name: Write handover settings
+        shell: bash
+        run: |
+          docker image inspect "$POWER_FORECAST_IMAGE" > tests/results/ci/image_inspect.json
+          python - <<'PY'
+          import json
+          import os
+          import shutil
+          from pathlib import Path
+          out = Path("tests/results/ci")
+          info = json.loads((out / "image_inspect.json").read_text())[0]
+          image = os.environ["POWER_FORECAST_IMAGE"]
+          repo = image.rsplit(":", 1)[0]
+          digests = [value for value in info["RepoDigests"] if value.startswith(repo + "@sha256:")]
+          assert len(digests) == 1, "Published image digest is missing or ambiguous"
+          assert info["Config"]["Labels"]["org.opencontainers.image.revision"] == os.environ["GITHUB_SHA"]
+          score = json.loads((out / "rolling_accuracy/summary.json").read_text())
+          release = {"image": image, "digest": digests[0], "platform": "linux/" + info["Architecture"],
+                     "commit": os.environ["GITHUB_SHA"], "model": "trend_detail_7station_2025_v1",
+                     "platform_contract": "fluxcast_v1", "api_timezone": score["time_basis"]["api"],
+                     "training_timezone": score["time_basis"]["source_csv_and_ts_column"],
+                     "time_policy": score["time_basis"]["time_policy"], "timezone_basis": score["time_basis"]["timezone_basis"],
+                     "utc_production_acceptance": "pending",
+                     "compose_smoke_test": "passed", "container_recreation_test": "passed",
+                     "observations_smoke_test": "passed", "observations_recreation_test": "passed",
+                     "metrics": score["metrics"]}
+          (out / "release.json").write_text(json.dumps(release, indent=2) + "\n")
+          delivery = out / "delivery"
+          delivery.mkdir(exist_ok=True)
+          shutil.copy2("compose.yaml", delivery / "compose.yaml")
+          (delivery / "release.env").write_text(
+              f"POWER_FORECAST_IMAGE={image}\nPOWER_FORECAST_BIND=127.0.0.1\n"
+              "POWER_FORECAST_PORT=8000\nPOWER_FORECAST_RUNTIME_DIR=./runtime\n"
+              "POWER_OBSERVATIONS_BIND=127.0.0.1\nPOWER_OBSERVATIONS_PORT=8002\n"
+              "POWER_OBSERVATIONS_RUNTIME_DIR=./runtime_observations\n")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as stream:
+              stream.write(f"## Tested image\n\n- Image: `{image}`\n- Digest: `{digests[0]}`\n"
+                           f"- Platform: `{release['platform']}`\n- Commit: `{release['commit']}`\n"
+                           f"- MAPE: {release['metrics']['mape_percent']:.4f}% (7008 points)\n"
+                           "- Compose startup and recreation checks passed. Target-server acceptance is still required.\n")
+          PY
+
+      - name: Export and reload the tested image
+        shell: bash
+        run: |
+          mkdir -p tests/results/offline_delivery
+          docker image inspect "$POWER_FORECAST_IMAGE" --format '{{.Id}}' > tests/results/ci/image_id_before_export.txt
+          docker image save "$POWER_FORECAST_IMAGE" | gzip -1 > tests/results/offline_delivery/image.tar.gz
+          docker image rm "$POWER_FORECAST_IMAGE"
+          if docker image inspect "$POWER_FORECAST_IMAGE" >/dev/null 2>&1; then
+            echo "The image tag must be absent before the import test"
+            exit 1
+          fi
+          docker image load --input tests/results/offline_delivery/image.tar.gz
+          docker image inspect "$POWER_FORECAST_IMAGE" --format '{{.Id}}' > tests/results/ci/image_id_after_import.txt
+          cmp tests/results/ci/image_id_before_export.txt tests/results/ci/image_id_after_import.txt
+          docker run --rm --pull never --entrypoint python "$POWER_FORECAST_IMAGE" -c '
+          from pathlib import Path
+          root = Path("/app")
+          for name in ("tests", "docs", "examples", ".git", ".github", ".env"):
+              assert not (root / name).exists(), name
+          assert {p.name for p in (root / "models/versions").iterdir()} == {"trend_detail_7station_2025_v1"}
+          assert not any((root / "runtime").iterdir()), "Image contains runtime history"
+          assert not any((root / "runtime_observations").iterdir()), "Image contains measured history"
+          assert (root / "observations_service/api.py").is_file()
+          assert not (root / "observations_service/tests").exists()
+          assert not (root / "observations_service/examples").exists()
+          print("Imported image contains only the active model and runtime files")
+          '
+
+      - name: Predict using the imported image without registry access
+        env:
+          POWER_FORECAST_PORT: "8002"
+          POWER_FORECAST_RUNTIME_DIR: /tmp/power-forecast-import
+          POWER_OBSERVATIONS_PORT: "8102"
+          POWER_OBSERVATIONS_RUNTIME_DIR: /tmp/power-observations-import
+        run: |
+          mkdir -p "$POWER_FORECAST_RUNTIME_DIR"
+          docker compose -p forecast-import up -d --pull never --wait --wait-timeout 300
+          python tests/run_api_test.py --base-url http://127.0.0.1:8002 \
+            --fixture-dir tests/fixtures/real_data_daily \
+            --save-response tests/results/ci/import_smoke_response.json
+          python -m observations_service.tests.run_container_smoke \
+            --base-url http://127.0.0.1:8102 --forecast-base-url http://127.0.0.1:8002 \
+            --save-response tests/results/ci/import_observations_smoke_response.json
+
+      - name: Collect imported image logs
+        if: always()
+        env:
+          POWER_FORECAST_PORT: "8002"
+          POWER_FORECAST_RUNTIME_DIR: /tmp/power-forecast-import
+          POWER_OBSERVATIONS_PORT: "8102"
+          POWER_OBSERVATIONS_RUNTIME_DIR: /tmp/power-observations-import
+        run: docker compose -p forecast-import logs --no-color > tests/results/ci/import_container.log 2>&1
+
+      - name: Stop imported image container
+        if: always()
+        env:
+          POWER_FORECAST_PORT: "8002"
+          POWER_FORECAST_RUNTIME_DIR: /tmp/power-forecast-import
+          POWER_OBSERVATIONS_PORT: "8102"
+          POWER_OBSERVATIONS_RUNTIME_DIR: /tmp/power-observations-import
+        run: docker compose -p forecast-import down
+
+      - name: Prepare complete offline handover
+        run: |
+          python tests/build_offline_delivery.py \
+            --archive "tests/results/release/offline-image-${TARGET_ARCH}-${GITHUB_SHA:0:12}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
+          git archive --format=zip --prefix=jingneng-power-forecast/ \
+            --output="tests/results/release/source-${GITHUB_SHA:0:12}.zip" "$GITHUB_SHA"
+          (cd tests/results/release && sha256sum "source-${GITHUB_SHA:0:12}.zip" > "source-${GITHUB_SHA:0:12}.zip.sha256")
+
+      - name: Publish verified files to repository Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          RELEASE_TAG="v7station-platform-${GITHUB_SHA:0:12}"
+          REPORT_NAME="container-checks-${TARGET_ARCH}-${GITHUB_SHA:0:12}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          python - "$REPORT_NAME" <<'PY'
+          import shutil
+          import sys
+          shutil.make_archive("tests/results/release/" + sys.argv[1], "zip", "tests/results/ci")
+          PY
+          if ! gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release create "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" \
+              --target "$GITHUB_SHA" --draft \
+              --title "96-point forecast and observations AMD64 ${GITHUB_SHA:0:12}" \
+              --notes "七站96点预测、实测及偏差接口。包含同提交源码ZIP、Linux AMD64离线镜像ZIP、SHA256校验和测试报告。已完成构建、接口、重启、73天滚动评分和镜像导出导入验证；目标服务器仍需联调。Source commit: $GITHUB_SHA." \
+              || gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null
+          fi
+          gh release upload "$RELEASE_TAG" tests/results/release/* --repo "$GITHUB_REPOSITORY" --clobber
+          gh release edit "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --draft=false --latest
+          gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json url --jq .url >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Summarize delivery status
+        if: always()
+        run: |
+          echo "Offline delivery is complete only when the repository Release upload succeeds. Failed-step details remain in the Actions job log." >> "$GITHUB_STEP_SUMMARY"

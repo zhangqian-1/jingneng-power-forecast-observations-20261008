@@ -1,0 +1,24 @@
+# Runtime state must stay on the deployment host.
+runtime/
+runtime_observations/
+*.log
+*.tmp
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local environment and IDE files.
+.venv/
+venv/
+env/
+.idea/
+.vscode/
+.env
+.env.*
+!.env.example
+
+# Generated requests are local artifacts; tracked CSVs support integration tests.
+tests/fixtures/
+
+# Generated local/CI reports are artifacts, not source files.
+tests/results/
